@@ -6,21 +6,35 @@ const messages = [
   "Invest your new income 🤑",
 ];
 
+
+ 
 export default function App(){
+  return <div>
+    <Steps />
+    <Steps />
+  </div>
+}
+
+function Steps(){
  const [step,setStep] = useState(1)
- const [isOpen,setIsOpen]=useState(true);
+ const [isOpen,setIsOpen]=useState(true); 
 
   function handlePrevious(){
-    if(step>1) setStep(step-1)
+    if(step>1) setStep((currStep)=>currStep-1)
   }
 
   function handleNext(){
-    if(step<3) setStep(step+1);
+    if(step<3) {
+      setStep((currStep)=>currStep+1);
+      // setStep((currStep)=>currStep+1);
+
+      
+    }
   }
 
   return (
     <>
-    <button className="close" onClick={()=>setIsOpen(!isOpen)}>&times;</button>
+    <button className="close" onClick={()=>setIsOpen((is)=>!is)}>&times;</button>
       {
         isOpen && (
           <div className="steps" >
